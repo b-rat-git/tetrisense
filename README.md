@@ -1,4 +1,4 @@
-# Teris for the Lovers
+# Tetris for the Lovers
 Enjoy Tetris with a little twist.
 
 ## Setup
