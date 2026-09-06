@@ -34,9 +34,56 @@ $(function () {
     $('#tetris-connect-container').show();
   });
 
-  // -------------------------------------------------------------------
-  // Copy connect code (same UX as Valentines)
-  // -------------------------------------------------------------------
+   $('#valentines-host').on('click', function () {
+    connection = new SimplePeer({ initiator: true, trickle: false });
+
+    setupPeer();
+    $('#valentines-host-client').hide();
+    $('#valentines-connect-container').show();
+    $('#valentines-host-instructions').show();
+
+    isHost = true;
+  });
+
+  $('#valentines-client').on('click', function () {
+    connection = new SimplePeer({ initiator: false, trickle: false });
+
+    setupPeer();
+    $('#valentines-host-client').hide();
+    $('#valentines-connect-container').show();
+    $('#valentines-client-instructions').show();
+
+    isHost = false;
+  });
+
+  $('#valentines-copyconnectcode').on('click', function () {
+    var content = $('#valentines-yourconnectcode').val();
+
+    navigator.clipboard.writeText(content)
+      .then(function () {
+        $('#valentines-copyconnectcode').text('Copied!');
+        setTimeout(function () {
+          $('#valentines-copyconnectcode').text('Copy');
+        }, 1000);
+      })
+      .catch(function (err) {
+        $('#valentines-copyconnectcode').text('Error ;-;');
+      });
+  });
+
+  function setupPeer() {
+    connection.on('signal', function (data) {
+      $('#valentines-yourconnectcode').val(btoa(JSON.stringify(data)));
+    });
+
+    connection.on('connect', function () {
+      console.log('Valentines - CONNECTED');
+      $(
+        '#valentines-connect-container, ' +
+        '#valentines-host-instructions, ' +
+        '#valentines-client-instructions'
+      ).hide();
+      $('#valentines-main').show();
 
   $('#tetris-copyconnectcode').on('click', function (e) {
     e.preventDefault();
