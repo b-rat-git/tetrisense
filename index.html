@@ -88,7 +88,33 @@
               <em><code>C</code> Key to Hold Item.</em>
             </div>
           </div>
-          <!-- input with a label -->
+                      <div class="row" id="tetris-role-row">
+            <div class="col-sm-6">
+              <button class="btn btn-success" style="width:100%" id="tetris-host">
+                I own the Lovense toys (Host)
+              </button>
+            </div>
+            <div class="col-sm-6">
+              <button class="btn btn-secondary" style="width:100%" id="tetris-player">
+                I am the player (Client)
+              </button>
+            </div>
+          </div>
+          <br />
+              <div id="tetris-connect-container" class="row" style="display:none;">
+            <div class="col-md-6">
+              <label for="tetris-yourconnectcode">Your Connect Code</label>
+              <input type="text" id="tetris-yourconnectcode" readonly />
+              <a href="#" id="tetris-copyconnectcode">Copy</a>
+            </div>
+
+            <div class="col-md-6">
+              <label for="tetris-peercode">Peer's Connect Code</label>
+              <input type="text" id="tetris-peercode" />
+              <a href="#" id="tetris-submitpeercode">Submit</a>
+            </div>
+          </div>
+            <!-- input with a label -->
           <div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" id="tetris-intense-mode">
             <label class="form-check-label" for="tetris-intense-mode">Enable INTENSE Mode (Will constantly Vibrate based upon the Current Level, so it get's harder the further you advance ;) )</label>
